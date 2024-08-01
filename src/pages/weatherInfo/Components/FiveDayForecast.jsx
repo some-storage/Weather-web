@@ -40,6 +40,7 @@ const Container = styled.div`
     border: 1px solid #dfdfdf;
     border-radius: 6px;
     margin-top: 27px;
+    margin-bottom: 30px;
     width: 90%;
 
     .title {
