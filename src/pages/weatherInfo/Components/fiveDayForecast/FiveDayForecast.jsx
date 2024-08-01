@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import ForecastCell from "./ForecastCell";
+import ForecastCell from "../forecastCell/ForecastCell";
 import { useState } from "react";
+import * as S from "./style";
 
 const FiveDayForecast = ({ weatherList }) => {
     const fiveDate = Array.from({ length: 5 }, (_, i) => i).map(i => {
@@ -18,7 +18,7 @@ const FiveDayForecast = ({ weatherList }) => {
     };
 
     return (
-        <Container>
+        <S.Container>
             <div className="title">5-day Forecast</div>
             {fiveDate.map((date, index) => (
                 <ForecastCell
@@ -29,36 +29,8 @@ const FiveDayForecast = ({ weatherList }) => {
                     onCellClick={cellClickHandler}
                 />
             ))}
-        </Container>
+        </S.Container>
     );
 };
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border: 1px solid #dfdfdf;
-    border-radius: 6px;
-    margin-top: 27px;
-    margin-bottom: 30px;
-    width: 90%;
-
-    .title {
-        font-weight: 700;
-        font-size: 36px;
-        text-align: center;
-        padding: 28px;
-    }
-
-    @media (max-width: 768px) {
-        width: 100%;
-
-        .title {
-            font-size: 20px;
-            text-align: center;
-            padding: 18px;
-        }
-    }
-`;
 
 export default FiveDayForecast;

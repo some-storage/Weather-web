@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import WeatherHeader from "./Components/WeatherHeader";
+import WeatherHeader from "./Components/weatherHeader/WeatherHeader";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import FiveDayForecast from "./Components/FiveDayForecast";
+import FiveDayForecast from "./Components/fiveDayForecast/FiveDayForecast";
+import * as S from "./style";
 
 const WeatherInfo = () => {
     const [weatherInfo, setWeatherInfo] = useState(null);
@@ -31,7 +31,7 @@ const WeatherInfo = () => {
     if (isLoding) return <div>로딩중..</div>;
 
     return (
-        <Container>
+        <S.Container>
             <img
                 src="https://cdn-icons-png.flaticon.com/512/11146/11146740.png"
                 alt="weather"
@@ -39,33 +39,8 @@ const WeatherInfo = () => {
             <p>Weather Information for {weatherInfo.city.name}</p>
             <WeatherHeader weatherInfo={weatherInfo} />
             <FiveDayForecast weatherList={weatherInfo.list} />
-        </Container>
+        </S.Container>
     );
 };
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-
-    & > img {
-        width: 68px;
-        margin-top: 30px;
-    }
-
-    & > p {
-        font-size: 50px;
-        font-weight: 900;
-        margin-top: 20px;
-        margin-bottom: 40px;
-    }
-
-    @media (max-width: 768px) {
-        & > p {
-            font-size: 25px;
-        }
-    }
-`;
 
 export default WeatherInfo;
