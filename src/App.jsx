@@ -1,25 +1,11 @@
-import { Route, Routes } from "react-router-dom";
-import WeatherInfo from "./pages/weatherInfo/WeatherInfo";
-import WeatherSelect from "./pages/weatherSelect/WeatherSelect";
-import NotFound from "./pages/notFound/NotFound";
+import { RouterProvider } from "react-router-dom";
+import Router from "./router";
 
 function App() {
     return (
-        <Routes>
-            <Route
-                path="/"
-                exact={true}
-                element={<WeatherSelect />}
-            />
-            <Route
-                path="/detail/:location"
-                element={<WeatherInfo />}
-            />
-            <Route
-                path="*"
-                element={<NotFound />}
-            />
-        </Routes>
+        <>
+            <RouterProvider router={Router} />
+        </>
     );
 }
 
