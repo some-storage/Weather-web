@@ -1,6 +1,15 @@
+import React from "react";
+import { IList } from "../../../../types/types";
 import * as S from "./style";
 
-const ForecastCell = ({ date, currentWeatherData, isPopup, onCellClick }) => {
+type ForecastCellProps = {
+    date: string;
+    currentWeatherData: IList[];
+    isPopup: boolean;
+    onCellClick: (targetDate: string) => void;
+};
+
+const ForecastCell = ({ date, currentWeatherData, isPopup, onCellClick }: ForecastCellProps) => {
     const currntDate = new Date(date);
     const monthNames = [
         "January",
@@ -29,7 +38,7 @@ const ForecastCell = ({ date, currentWeatherData, isPopup, onCellClick }) => {
                 />
             </S.DateHeader>
             <S.DetailList isPopup={isPopup}>
-                {currentWeatherData.map(currentData => {
+                {currentWeatherData.map((currentData: IList) => {
                     const cellDate = new Date(currentData.dt_txt);
                     const formatTime =
                         `${cellDate.getHours() < 10 ? "0" + cellDate.getHours() : cellDate.getHours()}` +

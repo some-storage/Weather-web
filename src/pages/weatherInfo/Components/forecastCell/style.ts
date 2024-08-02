@@ -36,7 +36,7 @@ export const DateHeader = styled.div`
     }
 `;
 
-export const DetailList = styled.div`
+export const DetailList = styled.div<{ isPopup: boolean }>`
     display: ${props => (props.isPopup ? "block" : "none")};
 
     .detailCell {

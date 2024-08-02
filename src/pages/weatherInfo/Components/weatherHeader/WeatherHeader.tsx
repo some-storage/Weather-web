@@ -1,7 +1,12 @@
+import { IWeatherInfoResponse } from "../../../../types/types";
 import * as S from "./style";
 
-const WeatherHeader = ({ weatherInfo }) => {
-    const todayWeatherInfo = weatherInfo.list[0];
+type InfoProps = {
+    info: IWeatherInfoResponse;
+};
+
+const WeatherHeader = ({ info }: InfoProps) => {
+    const todayWeatherInfo = info.list[0];
 
     return (
         <S.Container>
@@ -12,7 +17,7 @@ const WeatherHeader = ({ weatherInfo }) => {
             <div className="locInfo">
                 <p>{todayWeatherInfo.dt_txt}</p>
                 <p>
-                    {weatherInfo.city.name}, {weatherInfo.city.country}
+                    {info.city.name}, {info.city.country}
                 </p>
             </div>
             <div className="temInfo">
